@@ -1,13 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.21"
+    apply from: 'dependencies.gradle'
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,6 +18,58 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+}
+
+subprojects {
+    def subProjectName=it.name
+
+    if(subProjectName=="app"){
+        apply plugin:'com.android.application'
+    }else{
+        apply plugin:'com.android.library'
+    }
+    apply plugin:'kotlin-android'
+    apply plugin:'kotlin-android-extensions'
+    apply plugin:'kotlin-kapt'
+
+    android {
+        compileSdkVersion androidCompileSdkVersion
+
+        defaultConfig {
+            minSdkVersion androidMinSdkversion
+            targetSdkVersion androidTargetSdkVersion
+            versionCode appVersionCode
+            versionName appVersionName
+
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_1_8
+        }
+        buildFeatures{
+            dataBinding=true
+        }
+    }
+
+    dependencies {
+        implementation fileTree(dir:'libs',include:['*.jar'])
+        implementation androidLibs
+        implementation networkLibs
+        implementation dependencyInjectionLibs
+        testImplementation testLibs
+        androidTestImplementation androidTestLibs
     }
 }
 

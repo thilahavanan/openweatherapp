@@ -21,6 +21,9 @@ ext {
     materialVersion = "1.2.1"
     coroutinesAdapterVersion = "0.9.2"
     timberLogVersion = "4.7.1"
+    googlePlayServices="15.0.1"
+    activityResultAPI="1.2.3"
+    appCompatVersion="1.3.0"
     //testing
     junitVersion = "4.12"
     espressoVersion = "3.2.0"
@@ -32,6 +35,10 @@ ext {
             "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion",
             "androidx.recyclerview:recyclerview:$recyclerViewVersion",
             "androidx.cardview:cardview:$cardViewVersion",
+            "com.google.android.gms:play-services-location:$googlePlayServices",
+            "androidx.activity:activity-ktx:$activityResultAPI",
+            "androidx.fragment:fragment-ktx:$activityResultAPI",
+            "androidx.appcompat:appcompat:$appCompatVersion",
 
             //lifecycle
             "androidx.lifecycle:lifecycle-compiler:$lifeCycleVersion",

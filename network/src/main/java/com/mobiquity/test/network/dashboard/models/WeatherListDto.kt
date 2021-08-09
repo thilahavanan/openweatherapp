@@ -1,6 +1,6 @@
 package com.mobiquity.test.network.dashboard.models
 
-class WeatherListDto(
+data class WeatherListDto(
     val cod: String? = null,
     val message: String? = null,
     val cnt: Int? = null,

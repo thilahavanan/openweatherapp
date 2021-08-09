@@ -3,7 +3,7 @@ package com.mobiquity.test.network.dashboard.models
 data class ForecastDto(
     val dt: Long? = null,
     val main: ForecastMainDto? = null,
-    val weather: WeatherDto? = null
+    val weather: List<WeatherDto>? = emptyList()
 )
 
 data class ForecastMainDto(

@@ -2,4 +2,44 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="start_end_padding">16dp</dimen>
+    <dimen name="top_bottom_padding">16dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <!--Space-->
+    <dimen name="spaceHalf">0.5dp</dimen>
+    <dimen name="spaceXlg">24dp</dimen>
+    <dimen name="spaceLg">20dp</dimen>
+    <dimen name="spaceMd">16dp</dimen>
+    <dimen name="spaceSm">12dp</dimen>
+    <dimen name="spaceXl">48dp</dimen>
+    <dimen name="spaceXs">8dp</dimen>
+    <dimen name="spaceXxl">56dp</dimen>
+    <dimen name="spaceXxs">4dp</dimen>
+    <dimen name="spaceXxxl">72dp</dimen>
+    <dimen name="spaceZero">0dp</dimen>
+    <dimen name="spaceOne">0dp</dimen>
+    <dimen name="spaceTwo">2dp</dimen>
+
+    <!--Text Size-->
+    <dimen name="text_size_xxxl">60sp</dimen>
+    <dimen name="text_size_Xxxl">40sp</dimen>
+    <dimen name="text_size_Xxl">34sp</dimen>
+    <dimen name="text_size_lg">20sp</dimen>
+    <dimen name="text_size_lg_variant">22sp</dimen>
+    <dimen name="text_size_md">16sp</dimen>
+    <dimen name="text_size_md_variant">18sp</dimen>
+    <dimen name="text_size_sm">12sp</dimen>
+    <dimen name="text_size_xs">10sp</dimen>
+    <dimen name="text_size_xxs">6sp</dimen>
+
+    <dimen name="defaultmarginPhone">@dimen/default_padding</dimen>
+    <dimen name="default_lr_margin_phone">@dimen/defaultmarginPhone</dimen>
+    <dimen name="default_l_margin_tablet_percentage">0</dimen>
+    <dimen name="default_r_margin_tablet_percentage">1</dimen>
+    <dimen name="default_layout_guideline">0.5</dimen>
+    <dimen name="matchConstraint">@dimen/spaceZero</dimen>
+    <dimen name="default_card_radius">4dp</dimen>
+    <dimen name="default_card_elevation">4dp</dimen>
+    <dimen name="border">1dp</dimen>
 </resources>

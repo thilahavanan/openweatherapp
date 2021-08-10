@@ -8,11 +8,17 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.mobiquity.test.network.dashboard.models.ForeCastModel
 import com.mobiquity.test.openweather.BaseFragment
 import com.mobiquity.test.openweather.R
+import com.mobiquity.test.openweather.dashboard.adapter.SegmentedForCastedWeatherAdapter
 import com.mobiquity.test.openweather.dashboard.viewmodel.DashboardViewModel
+import com.mobiquity.test.openweather.dashboard.viewmodel.TODAY_FORECAST
+import com.mobiquity.test.openweather.dashboard.viewmodel.TOMORROW_FORECAST
 import com.mobiquity.test.openweather.databinding.DashboardFragmentBinding
 import org.koin.android.viewmodel.ext.android.getViewModel
 import timber.log.Timber
@@ -23,6 +29,7 @@ class DashboardFragment : BaseFragment() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lat: Double = 0.00
     private var lon: Double = 0.00
+    private lateinit var segmentedForCastedWeatherAdapter: SegmentedForCastedWeatherAdapter
 
     @SuppressLint("MissingPermission")
     private val requestPermission =
@@ -75,11 +82,50 @@ class DashboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         dashboardViewModel = getViewModel<DashboardViewModel>()
         binding.viewModel = dashboardViewModel
-        dashboardViewModel.weatherListDetailsLD.observe(viewLifecycleOwner, Observer {
+        binding.time.format24Hour = null
 
+        dashboardViewModel.segmentedWeatherListDetailsLD.observe(viewLifecycleOwner, Observer {
+            initSegmentedForCastWeather(it)
         })
+
         dashboardViewModel.currentWeatherDetailsLD.observe(viewLifecycleOwner, Observer {
 
         })
+
+        binding.chipGroup.setOnClickListener {
+            when (it.id) {
+                R.id.todayForcast -> {
+                    dashboardViewModel.setSegmentedForCastList(TODAY_FORECAST)
+                }
+                R.id.tomorrowForCast -> {
+                    dashboardViewModel.setSegmentedForCastList(TOMORROW_FORECAST)
+                }
+                R.id.thisWeekForcast -> {
+                    findNavController().navigate(DashboardFragmentDirections.actionNavigationDashboardToNavigationForcasted())
+                }
+            }
+        }
+
+        binding.todayForcast.setOnClickListener {
+            dashboardViewModel.setSegmentedForCastList(TODAY_FORECAST)
+        }
+        binding.tomorrowForCast.setOnClickListener {
+            dashboardViewModel.setSegmentedForCastList(TOMORROW_FORECAST)
+        }
+        binding.thisWeekForcast.setOnClickListener {
+            findNavController().navigate(DashboardFragmentDirections.actionNavigationDashboardToNavigationForcasted())
+        }
+    }
+
+    private fun initSegmentedForCastWeather(forecastList: List<ForeCastModel>) {
+        segmentedForCastedWeatherAdapter = SegmentedForCastedWeatherAdapter(
+            list = forecastList
+        )
+        binding.segmentedForecastList.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = segmentedForCastedWeatherAdapter
+        }
+        binding.executePendingBindings()
     }
 }

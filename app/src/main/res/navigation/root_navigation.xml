@@ -9,11 +9,20 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.mobiquity.test.openweather.dashboard.view.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment">
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_forcasted"
+            app:destination="@id/navigation_forcasted" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.mobiquity.test.openweather.settings.view.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/navigation_forcasted"
+        android:name="com.mobiquity.test.openweather.forecast.view.ForeCastFragment"
+        android:label="@string/title_forecasted"
+        tools:layout="@layout/forecast_fragment" />
 </navigation>

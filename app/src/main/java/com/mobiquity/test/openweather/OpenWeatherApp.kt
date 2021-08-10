@@ -4,6 +4,7 @@ import android.app.Application
 import com.mobiquity.test.network.basenetwork.AppIdInterceptor
 import com.mobiquity.test.network.basenetwork.RequestOfflineInterceptor
 import com.mobiquity.test.openweather.dashboard.dependency.DashboardDependencyLoader
+import com.mobiquity.test.openweather.settings.dependency.SettingsDependenciesloader
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -31,5 +32,6 @@ class OpenWeatherApp : Application() {
             modules(commonModule)
         }
         DashboardDependencyLoader().loadModules()
+        SettingsDependenciesloader().loadModules()
     }
 }

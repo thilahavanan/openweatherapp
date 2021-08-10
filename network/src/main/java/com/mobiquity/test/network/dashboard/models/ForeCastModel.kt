@@ -3,7 +3,7 @@ package com.mobiquity.test.network.dashboard.models
 class ForeCastModel(
     val dt: Long? = null,
     val main: ForeCastMainModel? = null,
-    val weather: List<WeatherModel>? = emptyList(),
+    val weather: List<WeatherModel>? = emptyList()
 ) {
     constructor(forecastDto: ForecastDto?) : this(
         dt = forecastDto?.dt ?: 1L,

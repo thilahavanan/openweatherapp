@@ -28,4 +28,6 @@ class CurrentWeatherModel(
         weatherModel = weather?.map { WeatherModel(it) },
         cityName = name
     )
+
+    fun getTodayWeatherCondition(): String = weatherModel?.first()?.description ?: ""
 }

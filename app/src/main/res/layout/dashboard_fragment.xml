@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -50,8 +51,10 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_wind"
-                        android:padding="@dimen/spaceSm"
+                        android:id="@+id/currentTemprature"
+                        android:drawableStart="@drawable/ic_weather_cloudy"
+                        android:paddingStart="@dimen/spaceSm"
+                        android:paddingTop="@dimen/spaceSm"
                         android:text="@{viewModel.currentWeatherDetailsLD.mainModel.temp}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_Xxxl"
@@ -59,7 +62,22 @@
                         app:drawableTint="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        tools:text="23"
                         app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/spaceMd"
+                        android:paddingBottom="@dimen/spaceMd"
+                        android:text="@{viewModel.currentWeatherDetailsLD.getTodayWeatherCondition()}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_sm"
+                        app:drawableTint="@color/list_font_white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/currentTemprature"
+                        tools:text="Clouds" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

@@ -1,13 +1,17 @@
 package com.mobiquity.test.network.dashboard.models
 
+import com.mobiquity.test.openweather.toTimeInString
+
 class ForeCastModel(
-    val dt: Long? = null,
+    val dateTime: String? = null,
     val main: ForeCastMainModel? = null,
     val weather: List<WeatherModel>? = emptyList()
 ) {
     constructor(forecastDto: ForecastDto?) : this(
-        dt = forecastDto?.dt ?: 1L,
+        dateTime = forecastDto?.dt?.toTimeInString() ?: 1L.toTimeInString(),
         weather = forecastDto?.weather?.map { WeatherModel(it) },
         main = forecastDto?.main?.let { ForeCastMainModel(it) }
     )
+
+    fun getTemprature(): String = main?.temp ?: ""
 }

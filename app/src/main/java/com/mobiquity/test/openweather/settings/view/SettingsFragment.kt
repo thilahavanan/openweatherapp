@@ -11,14 +11,14 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 
 class SettingsFragment : BaseFragment() {
 
-    private lateinit var notificationsViewModel: SettingsViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel = getViewModel<SettingsViewModel>()
+        settingsViewModel = getViewModel<SettingsViewModel>()
         val root = inflater.inflate(R.layout.settings_fragment, container, false)
         return root
     }

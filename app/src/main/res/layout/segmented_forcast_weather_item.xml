@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="forcastModel"
             type="com.mobiquity.test.network.dashboard.models.ForeCastModel" />
@@ -40,7 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/spaceSm"
-                        android:text="9 AM"
+                        android:text="@{forcastModel.dateTime}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_sm"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -51,18 +50,18 @@
                         android:id="@+id/weatherIcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_humidity"
+                        android:src="@drawable/ic_weather_partly_cloudy"
+                        app:tint="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/time"
-                        app:tint="@color/white" />
+                        app:layout_constraintTop_toBottomOf="@+id/time" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/temprature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/spaceSm"
-                        android:text="9 C"
+                        android:text="@{forcastModel.getTemprature()}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_sm"
                         app:layout_constraintEnd_toEndOf="parent"
